@@ -1,31 +1,48 @@
-# Flask API Starter
+# Starter Flask API
+Minimal, production-ready Flask REST API scaffold with a root endpoint and clear deployment options.
 
-This is the simplest possible python api using flask that responds with: 
+## Quick Start
+```bash
+# 1) Create and activate a virtual environment
+python3 -m venv venv
+# macOS/Linux
+source venv/bin/activate
+# Windows
+venv\Scripts\activate
+
+# 2) Install dependencies
+pip install -r requirements.txt
+
+# 3) Run (production-grade)
+gunicorn app:app -w 4 -b 0.0.0.0:8000
+
+# Optional: dev server (not recommended for production)
+# python app.py
 ```
-Hello, world!
+
+## Architecture
+```mermaid
+graph TD
+Client --> Gunicorn
+Gunicorn --> FlaskApp
+FlaskApp --> Jinja2
+FlaskApp --> ItsDangerous
+FlaskApp --> Werkzeug
+EnvDotenv --> FlaskApp
 ```
 
-## Deploy to Cyclic in seconds 
+## Tech Stack
+- Python
+- Flask
+- Gunicorn
+- Uvicorn
+- Waitress
+- Jinja2
+- ItsDangerous
+- Werkzeug
+- python-dotenv
 
-[![Deploy to Cyclic](https://deploy.cyclic.app/button.svg)](https://deploy.cyclic.app/)
-
-
-## Run Locally
-
-Prerequisites:
-- pyenv
-- python 3.10.11
-
-Install: `bin/install`
-- creates virtual env
-- installs dependencies from `requirements.txt`
-
-Run: `bin/start`
-- runs a `gunicorn` server
-
-
-## Questions / Help
-
-Join us on Discord: [https://discord.cyclic.sh](https://discord.cyclic.sh)
-
-Enjoy!
+## Key Features
+- Minimal Flask application with a root route
+- Production-ready deployment options with Gunicorn, Uvicorn, and Waitress
+- Lightweight skeleton with clear entry points (app.py, server.py) for rapid REST API development
